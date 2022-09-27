@@ -6,8 +6,7 @@ set -e
 # build
 npm run build
 
-# navigate into the build output director
-git add dist -f
+# navigate into the build output directory
 cd dist
 
 # place .nojekyll to bypass Jekyll processing
