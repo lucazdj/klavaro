@@ -1,19 +1,23 @@
+import { ref } from 'vue'
 import { defineStore } from 'pinia';
 
-export const useKeyboardStore = defineStore({
-  id: 'keyboard',
-  state: () => ({
-    currentText: ''
-  }),
-  actions: {
-    addKey(key: string) {
-      this.currentText += key;
-    },
-    removeKey() {
-      this.currentText = this.currentText.slice(0, -1);
-    },
-    updateText(text: string) {
-      this.currentText = text;
-    }
+export const useKeyboardStore = defineStore('keyboard', () => {
+  const currentText = ref('');
+
+  function addKey(key: string) {
+    currentText.value += key;
   }
+
+  function removeKey() {
+    currentText.value = currentText.value.slice(0, -1);
+  }
+
+  function updateText(text: string) {
+    currentText.value = text;
+  }
+
+  return {
+    currentText, addKey, removeKey, updateText,
+  }
+
 });

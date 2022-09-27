@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 import { ref } from 'vue';
-import { useKeyboardStore } from '../stores/keyboard';
+import { useKeyboardStore } from '@/stores/keyboard';
 
 const storeKeyboard = useKeyboardStore();
 

@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { useKeyboardStore } from '../stores/keyboard';
+import { useKeyboardStore } from '@/stores/keyboard';
 
 const storeKeyboard = useKeyboardStore();
 
 </script>
 
 <template>
-  <input type="textarea" :value="storeKeyboard.currentText"
-    @input="storeKeyboard.updateText(($event.target as HTMLTextAreaElement).value)"
-    class="p-4 border border-amber-800" />
+  <input :value="storeKeyboard.currentText" class="p-4 border border-amber-800"
+         type="text"
+         @input="storeKeyboard.updateText(($event.target as HTMLTextAreaElement).value)"/>
 </template>
 
 <style scoped>
