@@ -4,15 +4,15 @@ import { defineStore } from 'pinia';
 export const useKeyboardStore = defineStore('keyboard', () => {
   const currentText = ref('');
 
-  function addKey(key: string) {
+  function addKey(key?: string): void {
     currentText.value += key;
   }
 
-  function removeKey() {
+  function removeKey(): void {
     currentText.value = currentText.value.slice(0, -1);
   }
 
-  function updateText(text: string) {
+  function updateText(text: string): void {
     currentText.value = text;
   }
 
