@@ -22,7 +22,7 @@ const qwerty: Array<Key> = [];
 let i;
 for (i = 65; i <= 90; i++) {
   qwerty.push({
-    id: 'KEY-' + i,
+    id: 'Key-' + i,
     states: [
       String.fromCharCode(i + 32),
       String.fromCharCode(i)
@@ -32,7 +32,7 @@ for (i = 65; i <= 90; i++) {
 }
 
 qwerty.push({
-  id: 'KEY-' + i++,
+  id: 'Key-' + i++,
   states: [
     '←',
   ],
@@ -40,7 +40,7 @@ qwerty.push({
 });
 
 qwerty.push({
-  id: 'KEY-' + i++,
+  id: 'Key-' + i++,
   states: [
     '__',
   ],
