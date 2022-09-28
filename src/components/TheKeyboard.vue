@@ -47,9 +47,16 @@ qwerty.push({
   action: () => storeKeyboard.addKey(' '),
 });
 
-const keys = ref(qwerty);
+const keyboard: Keyboard = {
+  keys: qwerty,
+}
+
+const keys = ref(keyboard.keys);
 
 function handleClick(event: Event) {
+  const input = <HTMLInputElement>document.querySelector('#kb-input');
+  console.log(document.activeElement)
+  if (document.activeElement !== input) input.focus();
   const target = <HTMLInputElement>event.target;
   target.blur();
   const key: Key = qwerty.find(el => el.id === target.id) ?? <Key>{};
@@ -60,10 +67,11 @@ function handleClick(event: Event) {
 
 <template>
   <div class="grid grid-cols-10 justify-items-stretch gap-1 p-2 shadow-md">
-    <button v-for="key in keys" v-bind:id="key.id" v-bind:key="key.id" class="cursor-pointer p-2 border border-emerald-300 rounded hover:bg-green-200 focus:bg-green-400"
+    <button v-for="key in keys" v-bind:id="key.id" v-bind:key="key.id"
+            class="cursor-pointer p-2 border border-emerald-300 rounded hover:bg-green-200 focus:bg-green-400 select-none"
             type="button"
             v-bind:value="key.states[0]"
-            v-on:click="handleClick">
+            v-on:mousedown.prevent="handleClick">
       {{ key.states[0] }}
     </button>
   </div>
