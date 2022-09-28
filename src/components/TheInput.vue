@@ -10,9 +10,10 @@ function handleInput(event: Event) {
 </script>
 
 <template>
-  <textarea :value="storeKeyboard.currentText" class="p-4 border border-amber-800"
-         type="text"
-         @input="handleInput"/>
+  <textarea class="resize-none rounded-md h-40 scroll-smooth w-1/2 p-2 border border-b-cyan-300 caret-rose-500"
+            type="text"
+            v-bind:value="storeKeyboard.currentText"
+            v-on:input="handleInput"/>
 </template>
 
 <style scoped>
