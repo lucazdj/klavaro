@@ -16,8 +16,12 @@ export const useKeyboardStore = defineStore('keyboard', () => {
     currentText.value = text;
   }
 
+  function removeAll(): void {
+    currentText.value = '';
+  }
+
   return {
-    currentText, addKey, removeKey, updateText,
+    currentText, addKey, removeKey, updateText, removeAll,
   }
 
 });

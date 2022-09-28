@@ -11,10 +11,10 @@ function handleInput(event: Event) {
 
 <template>
   <textarea id="kb-input"
-      class="resize-none rounded-md h-40 scroll-smooth w-1/2 p-2 border border-b-cyan-300 caret-rose-500"
+            autofocus
+            class="resize-none rounded-md focus:outline focus:ring ring-green-300 outline-2 outline-offset-0 outline-emerald-500 h-40 scroll-smooth w-1/2 p-2 border border-emerald-500"
             type="text"
-            v-bind:value="storeKeyboard.currentText"
-            v-on:input="handleInput" autofocus/>
+            v-bind:value="storeKeyboard.currentText" v-on:input="handleInput"/>
 </template>
 
 <style scoped>
