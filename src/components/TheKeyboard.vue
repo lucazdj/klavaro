@@ -5,7 +5,6 @@ import { useKeyboardStore } from '@/stores/keyboard';
 
 const storeKeyboard = useKeyboardStore();
 
-
 interface Key {
   id: string,
   states: Array<string>,
@@ -33,31 +32,38 @@ for (i = 65; i <= 90; i++) {
 }
 
 qwerty.push({
-  id: 'KEY-' + i,
+  id: 'KEY-' + i++,
   states: [
-      '<-',
+    '←',
   ],
   action: () => storeKeyboard.removeKey(),
-})
+});
 
-const alphabet: Array<string> = 'qwertyuiopasdfghjklzxcvbnm'.split('');
+qwerty.push({
+  id: 'KEY-' + i++,
+  states: [
+    '__',
+  ],
+  action: () => storeKeyboard.addKey(' '),
+});
 
 const keys = ref(qwerty);
 
 function handleClick(event: Event) {
   const target = <HTMLInputElement>event.target;
   target.blur();
-  const key = qwerty.find((key) => key.id === target.id));
+  const key: Key = qwerty.find(el => el.id === target.id) ?? <Key>{};
   key.action && key.action(target.value);
 }
 
 </script>
 
 <template>
-  <div class="grid grid-cols-10 justify-items-stretch">
-    <button v-for="key in keys" :key="key.id" :id="key.id" :value="key.states[0]" class="cursor-pointer p-2 hover:bg-slate-400 focus:bg-slate-400"
+  <div class="grid grid-cols-10 justify-items-stretch gap-1 p-2 shadow-md">
+    <button v-for="key in keys" v-bind:id="key.id" v-bind:key="key.id" class="cursor-pointer p-2 border border-emerald-300 rounded hover:bg-green-200 focus:bg-green-400"
             type="button"
-            @click="handleClick">
+            v-bind:value="key.states[0]"
+            v-on:click="handleClick">
       {{ key.states[0] }}
     </button>
   </div>
